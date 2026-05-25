@@ -47,11 +47,11 @@ function GoogleBadge() {
   const { rating, count, platform } = siteConfig.reviews;
   return (
     <div className="inline-flex items-center gap-3 rounded-full border border-rule/15 bg-linen px-5 py-3">
-      <span className="font-display text-2xl text-ink" style={{ fontVariationSettings: "'opsz' 48" }}>
+      <span className="font-display text-2xl text-ink num-tabular" style={{ fontVariationSettings: "'opsz' 48" }}>
         {rating.toFixed(1)}
       </span>
       <Stars rating={Math.round(rating)} small />
-      <span className="text-sm text-muted">
+      <span className="text-sm text-graphite num-tabular">
         {count}+ {platform} reviews
       </span>
     </div>

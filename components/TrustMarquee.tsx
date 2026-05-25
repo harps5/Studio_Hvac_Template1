@@ -12,16 +12,26 @@ export function TrustMarquee() {
     ...siteConfig.trustSignals,
   ];
   return (
-    <section aria-label="Certifications and memberships" className="border-y border-rule/10 bg-surface/60 py-8 overflow-hidden">
-      <div className="flex w-max marquee-track gap-16 px-6">
+    <section
+      aria-label="Certifications and memberships"
+      className="border-y border-rule/10 bg-surface/60 py-10 overflow-hidden relative"
+      style={{
+        // Fade the marquee edges into the background — polished, not abrupt.
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+      }}
+    >
+      <div className="flex w-max marquee-track gap-14 px-6">
         {items.map((t, i) => (
           <div key={`${t.label}-${i}`} className="flex items-center gap-3 whitespace-nowrap">
             <span className="h-1 w-1 rounded-full bg-sienna" aria-hidden />
-            <span className="font-display text-base md:text-lg text-ink" style={{ fontVariationSettings: "'opsz' 24" }}>
+            <span className="font-display text-lg md:text-xl text-ink" style={{ fontVariationSettings: "'opsz' 28" }}>
               {t.label}
             </span>
             {t.detail && (
-              <span className="text-xs text-muted">— {t.detail}</span>
+              <span className="text-xs text-graphite">— {t.detail}</span>
             )}
           </div>
         ))}

@@ -48,6 +48,16 @@
     font-feature-settings: "ss01", "ss02", "ss05";
     font-optical-sizing: auto;
   }
+
+  /* Balance display-headline line breaks where supported */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  /* Tabular numerals for editorial numbers (stats, ratings, prices) */
+  .num-tabular {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @layer components {

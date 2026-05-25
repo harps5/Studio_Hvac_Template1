@@ -90,7 +90,7 @@ export function Nav() {
         }`}
       >
         <div className="container-page pb-8 pt-2">
-          <nav className="flex flex-col divide-y divide-rule/10" aria-label="Mobile">
+          <nav className="flex flex-col divide-y divide-rule/10" aria-label="Mobile primary">
             {links.map((l) => (
               <a
                 key={l.href}

@@ -1,5 +1,4 @@
 import { siteConfig } from "@/config/site";
-import { Wordmark } from "./Wordmark";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,7 +8,10 @@ export function Footer() {
         <div className="grid grid-cols-12 gap-10">
           {/* Brand */}
           <div className="col-span-12 md:col-span-4">
-            <Wordmark size="lg" />
+            <div className="font-display text-4xl md:text-5xl tracking-[-0.02em] text-ink">
+              {siteConfig.business.wordmark}
+              <span className="text-sienna">.</span>
+            </div>
             <p className="mt-5 max-w-xs text-graphite leading-relaxed">
               {siteConfig.business.tagline}
             </p>

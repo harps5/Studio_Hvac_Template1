@@ -38,8 +38,8 @@ export function FAQ() {
 
         <ul className="col-span-12 md:col-span-8 divide-y divide-rule/10 border-y border-rule/10">
           {siteConfig.faq.map((f, i) => (
-            <li key={i}>
-              <details className="group py-6 md:py-8">
+            <li key={i} className="transition-colors duration-200 hover:bg-surface/40">
+              <details className="group px-2 md:px-4 py-6 md:py-8">
                 <summary className="flex items-baseline justify-between gap-6">
                   <h3 className="font-display text-xl md:text-2xl text-ink leading-snug" style={{ fontVariationSettings: "'opsz' 32" }}>
                     {f.question}

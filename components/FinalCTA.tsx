@@ -71,29 +71,38 @@ export function FinalCTA() {
               aria-label="Book service request"
             >
               <div className="grid gap-3 sm:grid-cols-2">
-                <input
-                  className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
-                  placeholder="Name"
-                  type="text"
-                  name="name"
-                  required
-                  autoComplete="name"
-                />
-                <input
-                  className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
-                  placeholder="Phone"
-                  type="tel"
-                  name="phone"
-                  required
-                  autoComplete="tel"
-                />
+                <label className="block">
+                  <span className="sr-only">Your name</span>
+                  <input
+                    className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
+                    placeholder="Name"
+                    type="text"
+                    name="name"
+                    required
+                    autoComplete="name"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">Phone number</span>
+                  <input
+                    className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
+                    placeholder="Phone"
+                    type="tel"
+                    name="phone"
+                    required
+                    autoComplete="tel"
+                  />
+                </label>
               </div>
-              <input
-                className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
-                placeholder="What's going on? (e.g., furnace not igniting)"
-                type="text"
-                name="note"
-              />
+              <label className="block">
+                <span className="sr-only">What's going on</span>
+                <input
+                  className="w-full bg-transparent border-b border-surface/25 py-3 text-surface placeholder:text-surface/40 focus:border-sienna focus:outline-none"
+                  placeholder="What's going on? (e.g., furnace not igniting)"
+                  type="text"
+                  name="note"
+                />
+              </label>
               <button type="button" className="btn-primary mt-4">
                 Request a window
                 <ArrowLight />

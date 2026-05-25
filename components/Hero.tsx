@@ -96,7 +96,7 @@ function Stat({ n, k }: { n: string; k: string }) {
   return (
     <div>
       <dt className="label-meta">{k}</dt>
-      <dd className="mt-1 font-display text-2xl md:text-3xl text-ink" style={{ fontVariationSettings: "'opsz' 48" }}>
+      <dd className="mt-1 font-display text-2xl md:text-3xl text-ink num-tabular" style={{ fontVariationSettings: "'opsz' 48" }}>
         {n}
       </dd>
     </div>

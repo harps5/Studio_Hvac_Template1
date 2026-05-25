@@ -16,8 +16,8 @@ export function Services() {
 
         <ul className="mt-16 divide-y divide-rule/10 border-y border-rule/10">
           {siteConfig.services.map((s) => (
-            <li key={s.slug} id={s.slug} className="group">
-              <details className="py-8 md:py-10">
+            <li key={s.slug} id={s.slug} className="group transition-colors duration-300 hover:bg-surface/50">
+              <details className="px-2 md:px-4 py-8 md:py-10">
                 <summary className="grid grid-cols-12 items-baseline gap-6 cursor-pointer">
                   <span className="col-span-2 md:col-span-1 font-display text-muted text-base md:text-lg" style={{ fontVariationSettings: "'opsz' 24" }}>
                     {s.index}

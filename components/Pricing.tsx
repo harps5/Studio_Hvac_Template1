@@ -18,7 +18,7 @@ export function Pricing() {
           {/* Diagnostic */}
           <article className="bg-surface p-8 md:p-12">
             <span className="label-meta">Diagnostic visit</span>
-            <p className="mt-4 font-display text-ink" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", lineHeight: 1, fontVariationSettings: "'opsz' 96" }}>
+            <p className="mt-4 font-display text-ink num-tabular" style={{ fontSize: "clamp(4rem, 9vw, 6.5rem)", lineHeight: 1, letterSpacing: "-0.03em", fontVariationSettings: "'opsz' 144" }}>
               {siteConfig.pricing.diagnosticFee}
             </p>
             <p className="mt-4 text-graphite leading-relaxed max-w-prose">
