@@ -46,10 +46,12 @@ export function Pricing() {
           </article>
         </div>
 
-        <p className="mt-8 text-sm text-muted max-w-prose">
-          No service charge for written estimates on new equipment. After-hours
-          surcharge is posted and quoted before dispatch — never a surprise on the invoice.
-        </p>
+        <div className="mt-10 grid grid-cols-12 gap-6">
+          <p className="col-span-12 md:col-span-8 text-sm text-graphite leading-relaxed max-w-prose">
+            No service charge for written estimates on new equipment. After-hours
+            surcharge is posted and quoted before dispatch — never a surprise on the invoice.
+          </p>
+        </div>
       </div>
     </section>
   );

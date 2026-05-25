@@ -7,7 +7,7 @@ import { Wordmark } from "./Wordmark";
 const links = [
   { href: "#services", label: "Services" },
   { href: "#why", label: "Why Coulee" },
-  { href: "#process", label: "Process" },
+  { href: "#pricing", label: "Pricing" },
   { href: "#service-area", label: "Service area" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -86,7 +86,7 @@ export function Nav() {
       {/* Mobile drawer */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-editorial ${
-          open ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[640px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="container-page pb-8 pt-2">

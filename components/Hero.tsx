@@ -23,7 +23,7 @@ export function Hero() {
 
       <div className="container-page">
         {/* Eyebrow — region + discipline */}
-        <div className="flex items-center gap-3 reveal is-visible">
+        <div className="flex items-center gap-3">
           <span className="h-px w-8 bg-sienna" />
           <span className="eyebrow">Southern Alberta · Est. {siteConfig.business.founded}</span>
         </div>
@@ -48,16 +48,10 @@ export function Hero() {
         <div className="mt-10 grid gap-12 md:grid-cols-12 md:items-end">
           {/* Left: subhead */}
           <p className="md:col-span-6 max-w-prose text-lg md:text-xl leading-relaxed text-graphite">
-            {siteConfig.business.tagline} Furnaces, AC, heat pumps, and indoor air
-            for{" "}
-            <span className="text-ink">
-              {siteConfig.serviceArea.slice(0, -1).map((a) => a.name).join(", ")}
-            </span>{" "}
-            and{" "}
-            <span className="text-ink">
-              {siteConfig.serviceArea[siteConfig.serviceArea.length - 1].name}
+            {siteConfig.business.tagline}
+            <span className="block mt-3 text-base text-muted">
+              Serving <span className="text-ink">{siteConfig.serviceArea[0].name}</span> and {siteConfig.serviceArea.length - 1} surrounding communities.
             </span>
-            .
           </p>
 
           {/* Right: actions + trust microcopy */}
@@ -74,8 +68,8 @@ export function Hero() {
 
             <dl className="mt-8 grid grid-cols-3 gap-6">
               <Stat n={siteConfig.reviews.rating.toString()} k={`${siteConfig.reviews.platform} rating`} />
-              <Stat n="90 min" k="Avg emergency response" />
-              <Stat n="10 yr" k="Parts warranty included" />
+              <Stat n="Live" k="After-hours dispatch" />
+              <Stat n="10 yr" k="Parts warranty" />
             </dl>
           </div>
         </div>

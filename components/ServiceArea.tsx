@@ -63,13 +63,20 @@ function ServiceMapSVG({
 }) {
   // Hand-placed coordinates (relative) for the actual Southern AB layout.
   // Lethbridge at center; surrounding towns approximated relative to map bounds.
-  const placements: Record<string, { x: number; y: number }> = {
-    Lethbridge: { x: 50, y: 52 },
-    Coaldale: { x: 60, y: 50 },
-    "Picture Butte": { x: 47, y: 38 },
-    Taber: { x: 78, y: 50 },
-    Raymond: { x: 51, y: 67 },
-    "Fort Macleod": { x: 23, y: 47 },
+  // labelAnchor controls which side of the dot the label sits on, to prevent
+  // collisions where towns sit close together (e.g., Lethbridge ↔ Coaldale).
+  type Placement = {
+    x: number;
+    y: number;
+    labelAnchor?: "left" | "right" | "above" | "below";
+  };
+  const placements: Record<string, Placement> = {
+    Lethbridge: { x: 50, y: 52, labelAnchor: "left" },
+    Coaldale: { x: 62, y: 50, labelAnchor: "right" },
+    "Picture Butte": { x: 47, y: 36, labelAnchor: "above" },
+    Taber: { x: 80, y: 50, labelAnchor: "right" },
+    Raymond: { x: 51, y: 68, labelAnchor: "below" },
+    "Fort Macleod": { x: 21, y: 47, labelAnchor: "left" },
   };
 
   return (
@@ -113,6 +120,18 @@ function ServiceMapSVG({
         const p = placements[c.name];
         if (!p) return null;
         const isHQ = c.distanceKm === 0;
+        const anchor = p.labelAnchor ?? "right";
+
+        // Per-anchor label position + text-anchor
+        const labelProps =
+          anchor === "left"
+            ? { x: p.x - 1.6, y: p.y + 0.7, textAnchor: "end" as const }
+            : anchor === "above"
+            ? { x: p.x, y: p.y - 1.6, textAnchor: "middle" as const }
+            : anchor === "below"
+            ? { x: p.x, y: p.y + 3.2, textAnchor: "middle" as const }
+            : { x: p.x + 1.6, y: p.y + 0.7, textAnchor: "start" as const };
+
         return (
           <g key={c.name}>
             <circle
@@ -133,10 +152,11 @@ function ServiceMapSVG({
               />
             )}
             <text
-              x={p.x + 1.6}
-              y={p.y + 0.5}
-              fontSize="2"
+              x={labelProps.x}
+              y={labelProps.y}
+              fontSize="2.1"
               fill="#0F0E0D"
+              textAnchor={labelProps.textAnchor}
               fontFamily="var(--font-sans), sans-serif"
               fontWeight="500"
             >

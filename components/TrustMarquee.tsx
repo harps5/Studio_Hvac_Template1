@@ -5,7 +5,12 @@ import { siteConfig } from "@/config/site";
  * Pauses for reduced-motion users (handled in globals.css).
  */
 export function TrustMarquee() {
-  const items = [...siteConfig.trustSignals, ...siteConfig.trustSignals];
+  // Triple the list so the seamless loop (-50% translate) covers wide viewports
+  const items = [
+    ...siteConfig.trustSignals,
+    ...siteConfig.trustSignals,
+    ...siteConfig.trustSignals,
+  ];
   return (
     <section aria-label="Certifications and memberships" className="border-y border-rule/10 bg-surface/60 py-8 overflow-hidden">
       <div className="flex w-max marquee-track gap-16 px-6">

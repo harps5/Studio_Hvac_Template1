@@ -19,11 +19,11 @@ export function Process() {
           </p>
         </header>
 
-        <ol className="mt-16 grid gap-10 md:grid-cols-4 md:gap-0">
+        <ol className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           {siteConfig.process.map((p, i) => (
             <li
               key={p.step}
-              className={`md:px-8 ${i > 0 ? "md:border-l md:border-rule/10" : ""}`}
+              className={`lg:px-8 ${i > 0 ? "lg:border-l lg:border-rule/10" : ""}`}
             >
               <div className="flex items-center gap-3">
                 <span className="font-display text-sienna text-2xl" style={{ fontVariationSettings: "'opsz' 48" }}>
