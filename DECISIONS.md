@@ -153,3 +153,66 @@ If a designer pushed back on any single decision, the priority order I'd defend 
 4. **Services as a list, not a grid.** Same reasoning — the grid is the category default.
 
 If someone wanted to weaken one thing for shipping speed, it would be the hand-drawn map (acceptable downgrade to the labelled list below it).
+
+---
+
+## 2026-05-24 — Aesthetic RESET (category-correct rewrite)
+
+Feedback on v1: the editorial / Aesop-inspired direction was wrong for the category. HVAC buyers are homeowners in distress making fast trust decisions; the page was reading Victorian and elitist. Reset directive: confident modern sans, single non-blue accent, plain-spoken copy, structured photo placeholders. Same sections, same config, same architecture — visual language and copy only.
+
+### What changed
+
+**Typography: Fraunces + Inter Tight → Geist Sans (only).**
+- Added `geist` npm package (1 dependency, ~50 kB unpacked, supplies its own CSS variable). Brief allowed Geist explicitly.
+- Removed `next/font/google` imports, Fraunces' `opsz` / `SOFT` axis settings, all `font-display` class usage, and all `<span className="italic ...">` accents. Italic-serif "premium" cues are gone.
+- Geist is set as `font-sans` via `--font-geist-sans`. No display family.
+- Hero h1 uses `font-bold` (700) rather than `font-semibold` (600) — at clamp(3rem, 7vw, 5.25rem) Geist semibold reads slightly thin; bold reads correctly assertive.
+
+**Palette: linen + sienna → cream + forest green.**
+- Token *names* preserved (`linen`, `surface`, `ink`, `graphite`, `muted`, `rule`, `sienna`, `siennaDeep`) so component class references didn't churn. Only the hex values changed.
+- New values: `linen=#F5F4F0`, `surface=#FBFAF7`, `ink=#141414`, `graphite=#2A2A2A`, `muted=#6B6B6B`, `rule=#141414` (use at low alpha), `sienna=#0F5938` (forest green), `siennaDeep=#0A3F27`.
+- Forest green chosen over deep red/rust because: red over-codes "alarm/emergency" for an HVAC site (and competes with the literal emergency-service messaging); orange reads Home Depot; charcoal-and-cream needed *a* pop, and a saturated deep green signals "rooted, local, trade" without competing with the urgency copy.
+
+**Spacing: gallery-precious → generous-but-practical.**
+- Section padding: `clamp(5rem, 10vw, 9rem)` → `clamp(4rem, 7vw, 6.5rem)`. Trims roughly 30% off vertical breathing room while staying comfortably above the category default.
+- Section-header → content gap: `mt-16` → `mt-12`.
+- Card padding: `p-8 md:p-12` → `p-8 md:p-10`.
+
+**Copy: editorial → direct.**
+- Hero: "Heating, cooling, and indoor air for Southern Alberta — done properly, priced clearly." → "Heating and cooling. **Done right.**" Subhead: "Furnace, AC, heat pump, and hot water work for Lethbridge homes. Same-day service. Written warranties. 24/7 dispatch."
+- Services section header: "Six services. Done to one standard." → "Six services. One bar for all of them."
+- ServiceArea section header: "Built for the Oldman River valley." (deeply writerly) → "We work where we live."
+- FinalCTA: "Two ways in. Both work." → "Call us. Or book online."
+- Differentiator titles tightened: "Pricing on the page" stays, "Red Seal certified technicians" → "Red Seal techs only", "Written warranties, in plain English" → "Warranties in plain English".
+- Process verbs: "Complete" → "Done".
+- All service `detail` paragraphs scrubbed of jargon where homeowners wouldn't know it (`Manual J` → `heat-loss calculation`, `AFUE` removed from prose).
+
+**Imagery: SVG-only ornament → real photo placeholder zones.**
+- Hero now has an explicit `.photo-zone` div (aspect-[4/5]) with visible label + dimensions guidance ("Replace with a 4:5 portrait of a Coulee technician at a customer's door. Daylight, branded uniform, no stock-photo handshake. ~1200 × 1500 · /public/hero.jpg").
+- Reviews testimonials get small placeholder `Avatar` components — circle with initials, marked for swap to real customer photos.
+- Coulee-strata SVG ornament removed from Hero and FinalCTA. The "topographic" register read as luxury.
+- ServiceArea map redrawn as a schematic — grid lines, single solid coverage ring, square dots, compass tick, scale bar. Was: topographic strata + hand-drawn river meander (picturesque). Now: workmanlike diagram.
+
+**Other small calls:**
+- CTAs went from `rounded-full` to `rounded-md` — square-leaning corners read trades, not luxury hospitality.
+- Wordmark is now `Coulee HVAC` (full name) instead of `Coulee.` with a sienna period ornament. The period was a fussy editorial gesture.
+- Selection color, focus ring, link underline all retuned to the new green.
+- favicon and og.svg redrawn in the new register (sans-serif wordmark, green accent square, no serif italic).
+
+### What stayed identical
+
+- **Architecture.** Every section, every component, every export. Same `app/page.tsx` composition. Same `/config/site.ts` schema. Same SEO surface (JSON-LD, robots, sitemap, OG).
+- **Token names.** All Tailwind color classes (`bg-sienna`, `text-graphite`, etc.) have the same names; only values changed. So `bg-sienna` is now forest green everywhere it appears — a single point of brand truth.
+- **Single client component.** Still only `Nav.tsx`. No new client-rendered work.
+- **Build characteristics.** Still 88.5–88.6 kB First Load JS, still fully static, still one font load (Geist replaces Fraunces + Inter Tight — net zero font requests, ~30 kB lighter on font bytes because Geist Sans is smaller than two variable families combined).
+
+### Defending the reset
+
+If asked why I chose forest green over the obvious "trades red":
+1. Coulee is named for river valleys — green has semantic resonance the brand itself supports.
+2. Red over-codes alarm, which competes with the page's actual emergency messaging.
+3. Green signals "established, rooted, local" — the trust attribute homeowners are choosing on.
+4. Forest green is rare enough in the category that it's instantly recognizable as "not the usual HVAC site" without being weird.
+
+If asked why I added a dependency after "do not install unnecessary":
+- Geist was an explicit pick in the brief. Manrope (via `next/font/google`) would have been a zero-dep alternative, but Geist is the more category-correct modern sans, and its 1 npm dep / 50 kB cost is well below what `framer-motion` or a maps SDK would have added.

@@ -6,7 +6,7 @@ import { Wordmark } from "./Wordmark";
 
 const links = [
   { href: "#services", label: "Services" },
-  { href: "#why", label: "Why Coulee" },
+  { href: "#why", label: "Why us" },
   { href: "#pricing", label: "Pricing" },
   { href: "#service-area", label: "Service area" },
   { href: "#faq", label: "FAQ" },
@@ -25,9 +25,9 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ease-editorial ${
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-editorial ${
         scrolled
-          ? "bg-linen/85 backdrop-blur-md border-b border-rule/10"
+          ? "bg-linen/90 backdrop-blur-md border-b border-rule/10"
           : "bg-transparent"
       }`}
     >
@@ -36,22 +36,22 @@ export function Nav() {
           <Wordmark />
         </a>
 
-        <nav className="hidden md:flex items-center gap-9" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-graphite hover:text-ink transition-colors"
+              className="text-sm font-medium text-graphite hover:text-ink transition-colors"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href={`tel:${siteConfig.contact.phoneTel}`}
-            className="text-sm font-medium text-ink hover:text-sienna transition-colors"
+            className="text-sm font-semibold text-ink hover:text-sienna transition-colors num-tabular"
           >
             {siteConfig.contact.phone}
           </a>
@@ -85,7 +85,7 @@ export function Nav() {
 
       {/* Mobile drawer */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-editorial ${
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-400 ease-editorial ${
           open ? "max-h-[640px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -96,7 +96,7 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="py-4 text-lg text-ink"
+                className="py-4 text-lg font-medium text-ink"
               >
                 {l.label}
               </a>

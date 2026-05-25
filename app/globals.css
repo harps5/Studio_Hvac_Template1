@@ -13,106 +13,95 @@
 
   body {
     @apply bg-linen text-ink font-sans antialiased;
-    font-feature-settings: "ss01";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Anchor targets account for sticky nav height (h-16 / md:h-20) */
+  /* Anchor targets account for sticky nav height */
   section[id] {
     scroll-margin-top: 5rem;
   }
 
-  /* Selection — warm, on-brand */
+  /* Selection — accent on cream */
   ::selection {
-    background-color: #B2563B;
-    color: #FAF7F2;
+    background-color: #0F5938;
+    color: #FBFAF7;
   }
 
-  /* Focus rings — visible, but considered */
+  /* Focus rings — visible, square corners (sans aesthetic) */
   :focus-visible {
-    outline: 2px solid #B2563B;
+    outline: 2px solid #0F5938;
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* Hairline rule — used throughout for editorial separation */
   hr {
     border: 0;
-    border-top: 1px solid rgba(31, 29, 26, 0.12);
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-eyebrow uppercase font-medium text-sienna;
   }
 
-  /* Display headlines get tighter optical settings */
-  .font-display {
-    font-feature-settings: "ss01", "ss02", "ss05";
-    font-optical-sizing: auto;
+  .label-meta {
+    @apply text-label uppercase font-medium text-muted tracking-[0.12em];
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-page px-6 sm:px-8 lg:px-12;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-rule/10;
+  }
+
+  /* CTAs — square corners read as workmanlike, not luxury */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md
+           bg-sienna px-6 py-3.5 text-base font-medium text-surface
+           transition-colors duration-200 ease-editorial
+           hover:bg-siennaDeep;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md
+           border border-ink/20 px-6 py-3.5 text-base font-medium text-ink
+           transition-all duration-200 ease-editorial
+           hover:border-ink/50 hover:bg-ink/[0.03];
+  }
+
+  .link-editorial {
+    @apply text-ink underline decoration-sienna decoration-2 underline-offset-4
+           transition-colors hover:text-sienna;
+  }
+
+  .section {
+    @apply py-section;
+  }
+
+  .num-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Photo placeholder — visible during demo, swap with <Image> for real photos */
+  .photo-zone {
+    @apply relative flex items-center justify-center bg-ink/[0.06] border border-dashed border-ink/15;
+  }
+  .photo-zone-dark {
+    @apply relative flex items-center justify-center bg-surface/[0.06] border border-dashed border-surface/20;
   }
 
   /* Balance display-headline line breaks where supported */
   h1, h2, h3 {
     text-wrap: balance;
   }
-
-  /* Tabular numerals for editorial numbers (stats, ratings, prices) */
-  .num-tabular {
-    font-variant-numeric: tabular-nums;
-  }
 }
 
-@layer components {
-  /* Eyebrow label — small caps + tracked, used above headlines */
-  .eyebrow {
-    @apply text-eyebrow uppercase font-sans font-medium text-sienna;
-  }
-
-  /* Small caps label for metadata */
-  .label-meta {
-    @apply text-label uppercase font-sans font-medium text-muted tracking-[0.14em];
-  }
-
-  /* Container — page max width, consistent gutter */
-  .container-page {
-    @apply mx-auto w-full max-w-page px-6 sm:px-8 lg:px-12;
-  }
-
-  /* Hairline rule with optional label inset */
-  .hairline {
-    @apply h-px w-full bg-rule/10;
-  }
-
-  /* Primary CTA — sienna, restrained */
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full
-           bg-sienna px-7 py-4 text-base font-medium text-surface
-           transition-colors duration-300 ease-editorial
-           hover:bg-siennaDeep
-           focus-visible:outline-offset-4;
-  }
-
-  /* Secondary CTA — outlined ink */
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full
-           border border-ink/15 px-7 py-4 text-base font-medium text-ink
-           transition-all duration-300 ease-editorial
-           hover:border-ink/40 hover:bg-ink/[0.03];
-  }
-
-  /* Inline text link with editorial underline */
-  .link-editorial {
-    @apply text-ink underline decoration-sienna decoration-[0.08em] underline-offset-4
-           transition-colors hover:text-sienna;
-  }
-
-  /* Section wrapper */
-  .section {
-    @apply py-section;
-  }
-
-}
-
-/* Marquee — single ambient motion moment for trust signals.
-   Items are tripled in the markup, so a -33.333% loop produces a seamless cycle. */
+/* Marquee — tripled list, -33.333% loop for seamless cycle */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-33.333%); }
@@ -120,34 +109,11 @@
 .marquee-track {
   animation: marquee 48s linear infinite;
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
+  .marquee-track { animation: none; }
 }
 
-/* Hero word reveal — staggered, restrained */
-@keyframes word-rise {
-  from { opacity: 0; transform: translateY(0.4em); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.word-rise > span {
-  display: inline-block;
-  opacity: 0;
-  animation: word-rise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-@media (prefers-reduced-motion: reduce) {
-  .word-rise > span {
-    opacity: 1;
-    animation: none;
-  }
-}
-
-/* FAQ details — clean expand */
-details > summary {
-  list-style: none;
-  cursor: pointer;
-}
-details > summary::-webkit-details-marker {
-  display: none;
-}
+/* Disclosure pattern reset */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }

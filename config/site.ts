@@ -2,10 +2,10 @@
  * SITE CONFIG — single source of truth for all client-specific content.
  *
  * Swapping this template to a new HVAC client should require editing
- * ONLY this file (and replacing /public/og.svg + favicon if you want
- * the wordmark to match). All page sections read from siteConfig.
+ * ONLY this file (plus replacing /public/hero.jpg, /public/favicon.svg,
+ * and the wordmark text in /public/og.svg).
  *
- * See /config/README.md for the full schema and a 30-minute swap checklist.
+ * See /config/README.md for the schema and a 30-minute swap checklist.
  */
 
 export type ServiceArea = {
@@ -35,19 +35,16 @@ export type Differentiator = {
 };
 
 export type ProcessStep = {
-  step: string;       // "01"
-  title: string;      // "Book"
-  body: string;       // one-sentence description
+  step: string;
+  title: string;
+  body: string;
 };
 
 export type Testimonial = {
   quote: string;
   author: string;
-  /** e.g., "Lethbridge, AB" */
   location: string;
-  /** Service performed — optional context */
   service?: string;
-  /** 1–5 */
   rating: number;
 };
 
@@ -58,99 +55,62 @@ export type FAQItem = {
 
 export type TrustSignal = {
   label: string;
-  /** Optional: tooltip or subtitle */
   detail?: string;
 };
 
 export type SiteConfig = {
-  /** Brand */
   business: {
     name: string;
-    /** Short legal name for footer / structured data */
     legalName: string;
-    /** Wordmark text — usually same as name, but separable for stylization */
     wordmark: string;
-    /** Tagline used in hero microcopy + OG */
     tagline: string;
-    /** Year founded — used in trust microcopy only if you opt in */
     founded?: number;
   };
-
-  /** Contact */
   contact: {
-    phone: string;          // display format, e.g. "(403) 555-0100"
-    phoneTel: string;       // tel: format, e.g. "+14035550100"
+    phone: string;
+    phoneTel: string;
     email: string;
-    /** Optional physical address block */
     address?: {
       street?: string;
       city: string;
-      region: string;       // "AB"
+      region: string;
       postal?: string;
-      country: string;      // "Canada"
+      country: string;
     };
   };
-
-  /** Hours of operation — used in nav, footer, structured data */
   hours: {
-    weekday: string;        // e.g. "Mon–Fri, 7am–7pm"
-    saturday?: string;      // e.g. "Sat, 8am–4pm"
-    sunday?: string;        // omit if closed
-    emergency: string;      // e.g. "24/7 emergency service"
+    weekday: string;
+    saturday?: string;
+    sunday?: string;
+    emergency: string;
   };
-
-  /** Communities served — order matters (primary city first) */
   serviceArea: ServiceArea[];
-
-  /** Service catalog — exactly 6 recommended for the grid */
   services: Service[];
-
-  /** "Why us" cards — exactly 4 recommended */
   differentiators: Differentiator[];
-
-  /** Process steps — exactly 4 recommended */
   process: ProcessStep[];
-
-  /** Pricing transparency block */
   pricing: {
-    diagnosticFee: string;       // e.g. "$129"
-    diagnosticNote: string;      // e.g. "Waived with any repair."
-    financingHeadline: string;   // e.g. "0% financing for 12 months"
-    financingDetail: string;     // e.g. "OAC, via Financeit."
+    diagnosticFee: string;
+    diagnosticNote: string;
+    financingHeadline: string;
+    financingDetail: string;
   };
-
-  /** Trust marquee — certifications & memberships */
   trustSignals: TrustSignal[];
-
-  /** Featured testimonials — 3 recommended */
   testimonials: Testimonial[];
-
-  /** Aggregate review badge — placeholder is fine for a demo */
   reviews: {
-    rating: number;        // 4.9
-    count: number;         // 500
-    platform: string;      // "Google"
+    rating: number;
+    count: number;
+    platform: string;
   };
-
-  /** FAQ — 6 questions recommended */
   faq: FAQItem[];
-
-  /** Social links — optional; omit any that don't apply */
   social?: {
     google?: string;
     facebook?: string;
     instagram?: string;
   };
-
-  /** SEO */
   seo: {
-    /** <title> for the landing page */
     title: string;
-    /** <meta description> */
     description: string;
-    /** Canonical URL (no trailing slash) */
     url: string;
-    /** Used by OG/Twitter cards if no image override */
     ogTitle?: string;
     ogDescription?: string;
   };
@@ -158,15 +118,16 @@ export type SiteConfig = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  COULEE HVAC — placeholder demo content for Lethbridge, AB
+//  Tone: direct, plain-spoken. No "discerning homeowners." No "curated comfort."
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const siteConfig: SiteConfig = {
   business: {
     name: "Coulee HVAC",
     legalName: "Coulee HVAC Ltd.",
-    wordmark: "Coulee",
+    wordmark: "Coulee HVAC",
     tagline:
-      "Heating, cooling, and indoor air for Southern Alberta — done properly, priced clearly.",
+      "Heating, cooling, and hot water for Lethbridge homes. Done right, priced up front.",
     founded: 2009,
   },
 
@@ -201,27 +162,27 @@ export const siteConfig: SiteConfig = {
       slug: "furnace",
       index: "01",
       title: "Furnace install & repair",
-      summary: "High-efficiency furnaces, sized and installed for Lethbridge winters.",
+      summary: "High-efficiency furnaces sized for Lethbridge winters.",
       detail:
-        "We replace and service gas furnaces from 80% to 98% AFUE. Every install includes load calculation, combustion analysis, and a written commissioning report — not a sticker on the side.",
+        "We install and service gas furnaces from 80% to 98% efficient. Every install gets a heat-loss calculation and a combustion check — not a sticker on the side of the cabinet.",
       inclusions: [
-        "Manual J load calculation",
-        "Combustion analysis on every install",
+        "Heat-loss calculation on every install",
+        "Combustion check on every install",
         "10-year parts, 2-year labour warranty",
-        "Old equipment removal included",
+        "Old equipment removed and disposed",
       ],
     },
     {
       slug: "ac",
       index: "02",
       title: "Central air conditioning",
-      summary: "Quiet, right-sized AC that keeps up with 35°C July afternoons.",
+      summary: "Quiet AC that keeps up with 35°C July afternoons.",
       detail:
-        "Single-stage, two-stage, or inverter-driven systems matched to your home — not whatever's on the truck. We size with Manual J and verify airflow after install.",
+        "Single-stage, two-stage, or variable speed — sized to your home, not whatever's on the truck. We verify airflow after install and walk you through the thermostat before we leave.",
       inclusions: [
-        "Manual J + Manual D sizing",
-        "Airflow verification post-install",
-        "Refrigerant line flush on retrofits",
+        "Sized by manual calculation",
+        "Airflow verified after install",
+        "Refrigerant lines flushed on retrofits",
         "Smart thermostat included",
       ],
     },
@@ -229,13 +190,13 @@ export const siteConfig: SiteConfig = {
       slug: "heat-pump",
       index: "03",
       title: "Heat pump installation",
-      summary: "Cold-climate heat pumps that work at –30°C. Rebates handled.",
+      summary: "Cold-climate heat pumps that work down to -30°C. We file the rebates.",
       detail:
-        "Cold-climate heat pumps are now viable in Southern Alberta. We design dual-fuel systems with your existing furnace as backup, and we file the federal and provincial rebate paperwork for you.",
+        "Cold-climate heat pumps now make sense for Southern Alberta. We design dual-fuel systems with your existing furnace as backup — and we file the federal and provincial rebate paperwork for you.",
       inclusions: [
         "Cold-climate rated equipment only",
         "Dual-fuel changeover design",
-        "Rebate paperwork filed on your behalf",
+        "Rebate paperwork filed for you",
         "12-year compressor warranty",
       ],
     },
@@ -243,11 +204,11 @@ export const siteConfig: SiteConfig = {
       slug: "tankless",
       index: "04",
       title: "Tankless water heaters",
-      summary: "Endless hot water, half the gas, none of the standby loss.",
+      summary: "Endless hot water. Lower gas bill. No standby loss.",
       detail:
-        "Condensing tankless units with proper gas line sizing and venting. We pull permits, do the gas upgrade if needed, and commission the unit to manufacturer spec.",
+        "Condensing tankless units with properly sized gas lines and venting. We pull permits, do the gas upgrade if needed, and commission the unit to manufacturer spec.",
       inclusions: [
-        "Gas line resize where required",
+        "Gas line resized where required",
         "Permits pulled and closed",
         "Hard-water bypass valves",
         "15-year heat exchanger warranty",
@@ -257,28 +218,28 @@ export const siteConfig: SiteConfig = {
       slug: "iaq",
       index: "05",
       title: "Indoor air quality",
-      summary: "HRV, ERV, media filtration — for new builds and tightened-up retrofits.",
+      summary: "HRV, ERV, and filtration for newer, tighter homes.",
       detail:
-        "Tight houses need ventilation. We design HRV and ERV systems with dedicated ducting, balance them on commissioning, and pair them with MERV-13 media filtration that doesn't choke your furnace.",
+        "Tight houses need real ventilation. We install HRV and ERV systems with dedicated ducts, balance them on commissioning, and pair them with MERV-13 filters that don't kill your airflow.",
       inclusions: [
-        "HRV/ERV with dedicated ducting",
+        "Dedicated HRV/ERV ducting",
         "Balanced and commissioned on install",
         "MERV-13 media filtration",
-        "Annual core cleaning reminder",
+        "Annual core-cleaning reminder",
       ],
     },
     {
       slug: "emergency",
       index: "06",
       title: "24/7 emergency service",
-      summary: "Same technicians who installed it. Answering the phone at 2am.",
+      summary: "Same techs who installed it. Picking up the phone at 2am.",
       detail:
-        "No-heat calls are answered by a Coulee technician — not a call centre. We carry inventory for every furnace we've installed in the last decade, so most no-heat calls are resolved on the first visit.",
+        "Call the after-hours line and you get a real Coulee tech — not a call centre. We carry stock for every furnace we've installed in the last ten years, so most no-heat calls are fixed on the first visit.",
       inclusions: [
-        "Live tech dispatch, no call centre",
-        "Most repairs resolved first visit",
+        "Live tech dispatch — no call centre",
+        "Most repairs fixed first visit",
         "Stocked parts for 10+ years of installs",
-        "Flat after-hours surcharge, posted",
+        "After-hours surcharge is posted, never a surprise",
       ],
     },
   ],
@@ -287,20 +248,20 @@ export const siteConfig: SiteConfig = {
     {
       title: "Pricing on the page",
       body:
-        "The diagnostic fee is posted. The financing terms are posted. The trip charge is posted. We send a written estimate before any work begins — and we honour it.",
+        "Diagnostic fee, financing terms, after-hours surcharge — all posted. You get a written quote before any work begins, and we honour it.",
     },
     {
-      title: "Red Seal technicians only",
+      title: "Red Seal techs only",
       body:
-        "Every technician on a Coulee truck is a Red Seal certified gasfitter or refrigeration mechanic. No apprentices sent solo, ever.",
+        "Every tech on a Coulee truck is a Red Seal certified gasfitter or refrigeration mechanic. No apprentices sent out solo, ever.",
     },
     {
       title: "Same-day service, most days",
       body:
-        "Call before 10am on a weekday and we will be at your door before 5pm. If we can't, we will tell you when we book — not when we cancel.",
+        "Call before 10am on a weekday and we're at your door before 5pm. If we can't be, we tell you when we book — not when we cancel.",
     },
     {
-      title: "Written warranties, in plain English",
+      title: "Warranties in plain English",
       body:
         "Two pages, not twenty. What's covered, what's not, who pays for what — laid out before you sign.",
     },
@@ -310,22 +271,22 @@ export const siteConfig: SiteConfig = {
     {
       step: "01",
       title: "Book",
-      body: "Call or book online. Most appointments confirmed within the hour.",
+      body: "Call or book online. Most appointments confirmed within an hour.",
     },
     {
       step: "02",
       title: "Diagnose",
-      body: "A Red Seal tech arrives in the window quoted. Diagnostic fee is $129, waived with any repair.",
+      body: "Red Seal tech arrives in the window you booked. $129 diagnostic, waived with any repair.",
     },
     {
       step: "03",
       title: "Quote",
-      body: "Written, itemized estimate. Options where they exist. No upsell theatre.",
+      body: "Written quote, line-by-line. Options where they exist. No upsell pressure.",
     },
     {
       step: "04",
-      title: "Complete",
-      body: "Work performed, area cleaned, walkthrough done. Warranty in your inbox before we leave.",
+      title: "Done",
+      body: "Work completed, area cleaned, walkthrough done. Warranty in your inbox before we leave.",
     },
   ],
 
@@ -333,11 +294,11 @@ export const siteConfig: SiteConfig = {
     diagnosticFee: "$129",
     diagnosticNote: "Waived with any repair, big or small.",
     financingHeadline: "0% financing for 12 months",
-    financingDetail: "On approved credit, via Financeit. Most installs qualify same-day.",
+    financingDetail: "On approved credit, via Financeit. Most installs approved the same day.",
   },
 
   trustSignals: [
-    { label: "Red Seal Certified", detail: "Every technician on every truck" },
+    { label: "Red Seal Certified", detail: "Every tech, every truck" },
     { label: "Lennox Premier Dealer", detail: "Top 1% of independent dealers" },
     { label: "TECA Member", detail: "Thermal Environmental Comfort Association" },
     { label: "BBB A+", detail: "Better Business Bureau accredited" },
@@ -355,7 +316,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       quote:
-        "We got three quotes for a heat pump. Two were vague, one was honest. Coulee walked us through the dual-fuel design, filed the rebate paperwork, and the system has paid for itself faster than they said it would.",
+        "We got three quotes for a heat pump. Two were vague, one was honest. Coulee walked us through the dual-fuel design, filed the rebates, and the system has paid for itself faster than they said it would.",
       author: "David & Erin K.",
       location: "Coaldale, AB",
       service: "Heat pump installation",
@@ -363,7 +324,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       quote:
-        "After years of dust and dry winters, the HRV they put in changed how the house feels. Quiet, balanced, no surprises on the invoice. This is how a trade should operate.",
+        "After years of dust and dry winters, the HRV they put in changed how the house feels. Quiet, balanced, no surprises on the invoice. They explain what they're doing and they clean up after themselves.",
       author: "Marlene T.",
       location: "Taber, AB",
       service: "HRV installation",
@@ -381,17 +342,17 @@ export const siteConfig: SiteConfig = {
     {
       question: "How much does a service call cost?",
       answer:
-        "Our diagnostic fee is $129 and includes a full inspection plus a written estimate. If you proceed with the repair, the diagnostic fee is waived in full.",
+        "Our diagnostic fee is $129. It includes a full inspection plus a written estimate. If you go ahead with the repair, the diagnostic fee is waived in full.",
     },
     {
       question: "How fast can you respond to a no-heat call?",
       answer:
-        "Emergency calls go to a live Coulee technician, not a call centre. In Lethbridge we average a 90-minute on-site response for no-heat after-hours calls. Outlying communities add 30–60 minutes.",
+        "After-hours calls go to a live Coulee tech, not a call centre. In Lethbridge we average a 90-minute on-site response for no-heat after-hours calls. Outlying communities add 30–60 minutes.",
     },
     {
       question: "What warranties do you offer on installs?",
       answer:
-        "Furnaces: 10-year parts, 2-year labour. Air conditioners: 10-year parts, 2-year labour. Heat pumps: 12-year compressor, 10-year parts, 2-year labour. Tankless: 15-year heat exchanger. All in plain English on a two-page document.",
+        "Furnaces: 10-year parts, 2-year labour. AC: 10-year parts, 2-year labour. Heat pumps: 12-year compressor, 10-year parts, 2-year labour. Tankless: 15-year heat exchanger. All on a two-page document, in plain English.",
     },
     {
       question: "Do you offer financing?",
@@ -401,7 +362,7 @@ export const siteConfig: SiteConfig = {
     {
       question: "What's your service area?",
       answer:
-        "Lethbridge, Coaldale, Taber, Fort Macleod, Picture Butte, and Raymond. If you're outside that radius, call us — we routinely travel farther for installs and can usually accommodate.",
+        "Lethbridge, Coaldale, Taber, Fort Macleod, Picture Butte, and Raymond. Outside that radius, give us a call — we routinely travel further for installs and can usually accommodate.",
     },
     {
       question: "Which brands do you service?",
@@ -421,8 +382,8 @@ export const siteConfig: SiteConfig = {
     description:
       "Red Seal certified HVAC service in Lethbridge, Coaldale, Taber, Fort Macleod, Picture Butte, and Raymond. Transparent pricing, written warranties, 24/7 emergency service.",
     url: "https://couleehvac.ca",
-    ogTitle: "Coulee HVAC — Done properly, priced clearly",
+    ogTitle: "Coulee HVAC — Heating and cooling, done right",
     ogDescription:
-      "Furnace, AC, heat pump, and indoor air quality work for Southern Alberta. Same-day service. Written warranties. 0% financing.",
+      "Furnace, AC, heat pump, and hot water work for Lethbridge homes. Same-day service. Written warranties. 0% financing.",
   },
 };

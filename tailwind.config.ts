@@ -9,35 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm, considered palette — coulee geology, prairie light
-        linen: "#F4F0EA",        // page background — warm off-white, never #fff
-        surface: "#FAF7F2",      // lifted card / nav background
-        ink: "#0F0E0D",          // body text, warm near-black
-        graphite: "#3A3733",     // secondary text
-        muted: "#7A7268",        // tertiary / labels
-        rule: "#1F1D1A",         // hairline color (use at low alpha)
-        sienna: "#B2563B",       // signature accent — burnt sienna / copper
-        siennaDeep: "#8E3F26",   // hover / pressed state
-        moss: "#3F4A3A",         // optional secondary accent (rare use)
+        // Charcoal-and-cream with a single forest-green pop.
+        // Names preserved from v1 so components don't churn; values reset.
+        linen: "#F5F4F0",        // page background — cream, neutral
+        surface: "#FBFAF7",      // lifted card / nav background
+        ink: "#141414",          // body text — true charcoal, no warmth tint
+        graphite: "#2A2A2A",     // secondary text
+        muted: "#6B6B6B",        // tertiary / labels
+        rule: "#141414",         // hairlines (use at low alpha)
+        sienna: "#0F5938",       // ★ signature accent — deep forest green
+        siennaDeep: "#0A3F27",   // hover / pressed
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        // One sans for everything. Geist supplies its own CSS variable.
+        sans: ["var(--font-geist-sans)", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
       },
       fontSize: {
-        // Editorial scale — tight tracking on display, generous body
-        "display-xl": ["clamp(3.5rem, 8vw, 6.5rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
-        "display-lg": ["clamp(2.5rem, 5vw, 4rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],
-        "display-md": ["clamp(1.875rem, 3.5vw, 2.75rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
-        "eyebrow": ["0.6875rem", { lineHeight: "1", letterSpacing: "0.18em" }],
-        "label": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.08em" }],
+        // Workmanlike scale — confident without being precious.
+        // Headlines stay punchy; body stays legible.
+        "display-xl": ["clamp(3rem, 7vw, 5.25rem)", { lineHeight: "0.98", letterSpacing: "-0.03em" }],
+        "display-lg": ["clamp(2.25rem, 4.5vw, 3.5rem)", { lineHeight: "1.05", letterSpacing: "-0.025em" }],
+        "display-md": ["clamp(1.625rem, 3vw, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        "eyebrow": ["0.6875rem", { lineHeight: "1", letterSpacing: "0.16em" }],
+        "label": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.06em" }],
       },
       maxWidth: {
         prose: "62ch",
         page: "78rem",
       },
       spacing: {
-        section: "clamp(5rem, 10vw, 9rem)",
+        // Tightened from v1's gallery-precious clamp(5–9rem).
+        section: "clamp(4rem, 7vw, 6.5rem)",
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",

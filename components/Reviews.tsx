@@ -8,10 +8,10 @@ export function Reviews() {
           <div className="col-span-12 md:col-span-7">
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-sienna" />
-              <span className="eyebrow">In their words</span>
+              <span className="eyebrow">What customers say</span>
             </div>
-            <h2 className="mt-6 font-display text-display-lg text-ink leading-tight max-w-[18ch]">
-              The reviews keep saying the same three things.
+            <h2 className="mt-5 text-display-lg font-semibold text-ink max-w-[22ch]">
+              Reviews keep saying the same three things.
             </h2>
           </div>
           <div className="col-span-12 md:col-span-5 md:text-right">
@@ -19,20 +19,21 @@ export function Reviews() {
           </div>
         </header>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
           {siteConfig.testimonials.map((t, i) => (
-            <figure key={i} className="flex flex-col">
+            <figure key={i} className="flex flex-col bg-linen border border-rule/10 p-7">
               <Stars rating={t.rating} />
-              <blockquote className="mt-5 font-display text-xl md:text-2xl leading-snug text-ink" style={{ fontVariationSettings: "'opsz' 32" }}>
-                <span className="text-sienna">&ldquo;</span>
+              <blockquote className="mt-5 text-base md:text-lg leading-relaxed text-ink">
                 {t.quote}
-                <span className="text-sienna">&rdquo;</span>
               </blockquote>
-              <figcaption className="mt-6 pt-4 border-t border-rule/10">
-                <div className="text-ink">{t.author}</div>
-                <div className="text-sm text-muted">
-                  {t.location}
-                  {t.service && <> · {t.service}</>}
+              <figcaption className="mt-6 pt-5 border-t border-rule/10 flex items-center gap-3">
+                <Avatar name={t.author} />
+                <div>
+                  <div className="text-ink font-medium">{t.author}</div>
+                  <div className="text-sm text-muted">
+                    {t.location}
+                    {t.service && <> · {t.service}</>}
+                  </div>
                 </div>
               </figcaption>
             </figure>
@@ -43,11 +44,33 @@ export function Reviews() {
   );
 }
 
+/**
+ * Reviewer avatar — placeholder for now. Initials on a soft surface.
+ * Swap with <Image src=`/reviews/${slug}.jpg` /> when real photos exist.
+ * Recommended: 96×96 jpg, daylight, neutral background, no group shots.
+ */
+function Avatar({ name }: { name: string }) {
+  const initials = name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return (
+    <div
+      className="h-10 w-10 shrink-0 rounded-full bg-ink/[0.07] border border-rule/10 flex items-center justify-center text-xs font-semibold text-graphite"
+      aria-hidden
+    >
+      {initials}
+    </div>
+  );
+}
+
 function GoogleBadge() {
   const { rating, count, platform } = siteConfig.reviews;
   return (
-    <div className="inline-flex items-center gap-3 rounded-full border border-rule/15 bg-linen px-5 py-3">
-      <span className="font-display text-2xl text-ink num-tabular" style={{ fontVariationSettings: "'opsz' 48" }}>
+    <div className="inline-flex items-center gap-3 rounded-md border border-rule/15 bg-linen px-4 py-2.5">
+      <span className="text-2xl font-semibold text-ink num-tabular tracking-tight">
         {rating.toFixed(1)}
       </span>
       <Stars rating={Math.round(rating)} small />

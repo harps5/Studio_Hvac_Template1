@@ -1,44 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F4F0EA"/>
-      <stop offset="100%" stop-color="#EDE6DC"/>
-    </linearGradient>
-    <radialGradient id="warm" cx="80%" cy="0%" r="60%">
-      <stop offset="0%" stop-color="#B2563B" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#B2563B" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-
-  <!-- Background -->
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#warm)"/>
-
-  <!-- Coulee strata, bottom -->
-  <g stroke="#1F1D1A" fill="none" stroke-width="1.2">
-    <path d="M0 460 C 240 440, 480 490, 720 450 S 1200 505, 1440 455" stroke-opacity="0.07"/>
-    <path d="M0 480 C 240 460, 480 510, 720 470 S 1200 525, 1440 475" stroke-opacity="0.08"/>
-    <path d="M0 500 C 240 480, 480 530, 720 490 S 1200 545, 1440 495" stroke-opacity="0.09"/>
-    <path d="M0 520 C 240 500, 480 550, 720 510 S 1200 565, 1440 515" stroke-opacity="0.10"/>
-    <path d="M0 540 C 240 520, 480 570, 720 530 S 1200 585, 1440 535" stroke-opacity="0.11"/>
-    <path d="M0 560 C 240 540, 480 590, 720 550 S 1200 605, 1440 555" stroke-opacity="0.12"/>
-  </g>
+  <!-- Cream background -->
+  <rect width="1200" height="630" fill="#F5F4F0"/>
 
   <!-- Eyebrow -->
   <g transform="translate(80, 100)">
-    <line x1="0" y1="10" x2="40" y2="10" stroke="#B2563B" stroke-width="2"/>
-    <text x="56" y="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="500" letter-spacing="3" fill="#B2563B">SOUTHERN ALBERTA · EST. 2009</text>
+    <line x1="0" y1="10" x2="40" y2="10" stroke="#0F5938" stroke-width="2.5"/>
+    <text x="56" y="14" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="600" letter-spacing="3" fill="#0F5938">LETHBRIDGE &amp; AREA · EST. 2009</text>
   </g>
 
   <!-- Headline -->
-  <text x="80" y="260" font-family="Georgia, 'Times New Roman', serif" font-size="108" font-weight="500" fill="#0F0E0D" letter-spacing="-3">Heating. Cooling.</text>
-  <text x="80" y="370" font-family="Georgia, 'Times New Roman', serif" font-size="108" font-weight="500" fill="#0F0E0D" letter-spacing="-3">Done <tspan font-style="italic" fill="#B2563B">properly.</tspan></text>
+  <text x="80" y="260" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="92" font-weight="700" fill="#141414" letter-spacing="-3">Heating and cooling,</text>
+  <text x="80" y="360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="92" font-weight="700" letter-spacing="-3"><tspan fill="#0F5938">done right.</tspan></text>
 
   <!-- Subhead -->
-  <text x="80" y="440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" fill="#3A3733">Furnace, AC, heat pump, and IAQ work for Lethbridge and Southern Alberta.</text>
+  <text x="80" y="430" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="400" fill="#2A2A2A">Furnace, AC, heat pump, and hot water for Lethbridge homes.</text>
+  <text x="80" y="460" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="400" fill="#2A2A2A">Same-day service. Written warranties. 24/7 dispatch.</text>
 
   <!-- Wordmark bottom-right -->
-  <g transform="translate(1056, 552)">
-    <text font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="500" fill="#0F0E0D" letter-spacing="-1">Coulee<tspan fill="#B2563B">.</tspan></text>
+  <g transform="translate(960, 552)">
+    <text font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#141414" letter-spacing="-1">Coulee HVAC</text>
   </g>
+
+  <!-- Hairline above wordmark -->
+  <line x1="80" y1="540" x2="1120" y2="540" stroke="#141414" stroke-opacity="0.12" stroke-width="1"/>
 </svg>

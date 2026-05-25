@@ -9,47 +9,53 @@ export function Pricing() {
             <span className="h-px w-8 bg-sienna" />
             <span className="eyebrow">Pricing, posted</span>
           </div>
-          <h2 className="mt-6 font-display text-display-lg text-ink leading-tight max-w-[20ch]">
+          <h2 className="mt-5 text-display-lg font-semibold text-ink max-w-[24ch]">
             The price is on the page. That's the point.
           </h2>
         </header>
 
-        <div className="mt-16 grid gap-px bg-rule/10 md:grid-cols-2 border border-rule/10">
+        <div className="mt-12 grid gap-px bg-rule/10 md:grid-cols-2 border border-rule/10">
           {/* Diagnostic */}
-          <article className="bg-surface p-8 md:p-12">
+          <article className="bg-surface p-8 md:p-10">
             <span className="label-meta">Diagnostic visit</span>
-            <p className="mt-4 font-display text-ink num-tabular" style={{ fontSize: "clamp(4rem, 9vw, 6.5rem)", lineHeight: 1, letterSpacing: "-0.03em", fontVariationSettings: "'opsz' 144" }}>
+            <p
+              className="mt-4 text-ink font-semibold num-tabular tracking-tight"
+              style={{ fontSize: "clamp(3.5rem, 8vw, 5.5rem)", lineHeight: 1, letterSpacing: "-0.04em" }}
+            >
               {siteConfig.pricing.diagnosticFee}
             </p>
             <p className="mt-4 text-graphite leading-relaxed max-w-prose">
-              Includes a full inspection, written estimate, and combustion or
-              refrigerant readings where applicable. {siteConfig.pricing.diagnosticNote}
+              Full inspection, written estimate, and combustion or refrigerant
+              readings where applicable. {siteConfig.pricing.diagnosticNote}
             </p>
-            <a href="#book" className="mt-8 inline-flex link-editorial">
+            <a href="#book" className="mt-7 inline-flex link-editorial">
               Book a diagnostic visit
             </a>
           </article>
 
           {/* Financing */}
-          <article className="bg-surface p-8 md:p-12">
+          <article className="bg-surface p-8 md:p-10">
             <span className="label-meta">Financing</span>
-            <p className="mt-4 font-display text-ink leading-tight" style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontVariationSettings: "'opsz' 72" }}>
+            <p
+              className="mt-4 text-ink font-semibold tracking-tight"
+              style={{ fontSize: "clamp(1.875rem, 3.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.025em" }}
+            >
               {siteConfig.pricing.financingHeadline}
             </p>
             <p className="mt-4 text-graphite leading-relaxed max-w-prose">
-              {siteConfig.pricing.financingDetail} Longer-term plans available — ask
-              your technician for the rate sheet.
+              {siteConfig.pricing.financingDetail} Longer-term plans available —
+              ask your tech for the rate sheet.
             </p>
-            <a href="#quote" className="mt-8 inline-flex link-editorial">
+            <a href="#quote" className="mt-7 inline-flex link-editorial">
               Get a financed quote
             </a>
           </article>
         </div>
 
-        <div className="mt-10 grid grid-cols-12 gap-6">
+        <div className="mt-8 grid grid-cols-12 gap-6">
           <p className="col-span-12 md:col-span-8 text-sm text-graphite leading-relaxed max-w-prose">
             No service charge for written estimates on new equipment. After-hours
-            surcharge is posted and quoted before dispatch — never a surprise on the invoice.
+            surcharge is posted and quoted before we dispatch — never a surprise on the invoice.
           </p>
         </div>
       </div>

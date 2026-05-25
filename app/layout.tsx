@@ -1,20 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter_Tight } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-display",
-  axes: ["opsz", "SOFT"],
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.seo.url),
@@ -51,15 +38,13 @@ export const metadata: Metadata = {
   alternates: { canonical: siteConfig.seo.url },
   robots: { index: true, follow: true },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F4F0EA",
+  themeColor: "#F5F4F0",
   width: "device-width",
   initialScale: 1,
 };
@@ -78,10 +63,7 @@ const jsonLd = {
     "addressCountry": siteConfig.contact.address?.country,
   },
   "areaServed": siteConfig.serviceArea.map((a) => a.name),
-  "openingHours": [
-    "Mo-Fr 07:00-19:00",
-    "Sa 08:00-16:00",
-  ],
+  "openingHours": ["Mo-Fr 07:00-19:00", "Sa 08:00-16:00"],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": siteConfig.reviews.rating,
@@ -91,11 +73,11 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${interTight.variable}`}>
+    <html lang="en" className={GeistSans.variable}>
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-surface"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-surface"
         >
           Skip to content
         </a>

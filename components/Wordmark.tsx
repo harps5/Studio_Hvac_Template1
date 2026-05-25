@@ -12,14 +12,13 @@ const sizes = {
 };
 
 /**
- * Wordmark — typographic only, no icon.
- * The brand sits in the font choice + the tight tracking.
+ * Wordmark — sans-serif, weight 600, tight tracking. No ornament.
+ * The brand sits in the type, not in a decoration.
  */
 export function Wordmark({ className = "", size = "md" }: Props) {
   return (
-    <span className={`font-display ${sizes[size]} tracking-[-0.02em] text-ink ${className}`}>
+    <span className={`font-sans font-semibold tracking-[-0.03em] text-ink ${sizes[size]} ${className}`}>
       {siteConfig.business.wordmark}
-      <span className="text-sienna">.</span>
     </span>
   );
 }

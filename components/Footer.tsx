@@ -4,18 +4,17 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-linen border-t border-rule/10">
-      <div className="container-page py-16 md:py-20">
+      <div className="container-page py-14 md:py-16">
         <div className="grid grid-cols-12 gap-10">
           {/* Brand */}
           <div className="col-span-12 md:col-span-4">
-            <div className="font-display text-4xl md:text-5xl tracking-[-0.02em] text-ink">
+            <div className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] text-ink">
               {siteConfig.business.wordmark}
-              <span className="text-sienna">.</span>
             </div>
-            <p className="mt-5 max-w-xs text-graphite leading-relaxed">
+            <p className="mt-4 max-w-xs text-graphite leading-relaxed">
               {siteConfig.business.tagline}
             </p>
-            <div className="mt-6 flex flex-col gap-1 text-sm text-graphite">
+            <div className="mt-5 flex flex-col gap-1 text-sm text-graphite">
               <a href={`tel:${siteConfig.contact.phoneTel}`} className="hover:text-sienna transition-colors">
                 {siteConfig.contact.phone}
               </a>
@@ -77,7 +76,7 @@ export function Footer() {
           </div>
         </div>
 
-        <hr className="my-12" />
+        <hr className="my-10" />
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-muted">
           <p>
